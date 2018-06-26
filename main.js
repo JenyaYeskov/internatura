@@ -20,15 +20,19 @@ function addStudent() {
     let input = document.getElementById("inputId").value;
 
     if (input !== "") {
-        let bod = JSON.stringify({
+        input = input.split(",");
+        let name = input[0];
+        let knowledge = input[1];
+
+        let body = JSON.stringify({
             "name": name,
-            "knowledge": 5
+            "knowledge": knowledge
         });
 
         return fetch(url, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: bod
+            body: body
         });
     }
 }
